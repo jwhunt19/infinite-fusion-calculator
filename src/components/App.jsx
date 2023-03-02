@@ -1,4 +1,7 @@
 import React from 'react';
+import axios from 'axios';
+
+import * as infiniteFusionData from '../data/infiniteFusionData.js'
 
 class App extends React.Component {
   constructor () {
@@ -6,10 +9,15 @@ class App extends React.Component {
     this.state = {}
   }
 
+  test (x) {
+    console.log(x)
+  }
+
   render () {
     return (
       <>
-        <div>test! IF test 123</div>
+        <h1>Infinite Fusion Calculator</h1>
+        <button onClick={() => this.test(infiniteFusionData.aegislashStats)}>test</button>
       </>
     )
   }

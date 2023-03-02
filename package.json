@@ -5,8 +5,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "gh-pages -d build",
-    "build": "webpack"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public",
+    "build": "webpack",
+    "watch": "webpack -w"
   },
   "repository": {
     "type": "git",
