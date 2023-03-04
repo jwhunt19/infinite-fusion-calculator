@@ -1,11 +1,17 @@
 import React from 'react';
+import axios from 'axios';
 
-const Fusion = () => {
+const Fusion = (head, body) => {
+
+  let dex
+
+  
 
   return (
     <>
     {/* todo - dex # */}
-    {/* todo - fusion nuber (###.###) */}
+    {/* todo - fusion number (###.###) */}
+    {/* todo - fusion name */}
     {/* todo - sprite compoment */}
     {/* todo - names head/body */}
     {/* todo - types (check for exceptions) */}
