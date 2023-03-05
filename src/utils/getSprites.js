@@ -8,14 +8,14 @@ const getSprites = async (head, body) => {
     const response = await fetch(customURL);
     if (!response.ok) {
       // If the response status is not ok (i.e. 404), return a placeholder URL
-      return autogenURL; // replace with your desired placeholder URL
+      return [autogenURL, 0]; // replace with your desired placeholder URL
     }
     // If the response status is ok, return the original URL
-    return customURL;
+    return [customURL, 1];
   } catch (error) {
     console.error(error);
     // If there's an error, return the placeholder URL
-    return autogenURL; // replace with your desired placeholder URL
+    return [autogenURL, 0]; // replace with your desired placeholder URL
   }
 }
 
