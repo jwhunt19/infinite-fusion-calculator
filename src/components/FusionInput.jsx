@@ -5,8 +5,8 @@ import { ids } from '../data/infiniteFusionData.js'
 const FusionInput = ({ pokemon, setPokemon, inputFor }) => {
   const handleChange = (e) => {
     // disallow periods, hyphens, and spaces which might be expected but aren't used
-    const value = e.target.value.replace(/[\s.-]/g, '');
-    e.target.value = value;
+    const value = e.target.value.replace(/[^a-zA-Z]/g, '');
+    e.target.value = value.toLowerCase();
 
     // Gets data-id containing pokedex number
     let selectedId;
@@ -14,7 +14,7 @@ const FusionInput = ({ pokemon, setPokemon, inputFor }) => {
     if (selectedOption) selectedId = Number(selectedOption.getAttribute('data-id'))
 
     // sets passed pokemon state to inputted name and dex # 
-    setPokemon([e.target.value.toLowerCase(), selectedId])
+    setPokemon([e.target.value, selectedId])
   };
 
   return (
