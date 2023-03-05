@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 const getSprites = async (head, body) => {
   const autogenURL = `https://raw.githubusercontent.com/Aegide/autogen-fusion-sprites/master/Battlers/${head}/${head}.${body}.png`
   const customURL = `https://raw.githubusercontent.com/Aegide/custom-fusion-sprites/main/CustomBattlers/${head}.${body}.png`

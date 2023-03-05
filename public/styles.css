@@ -10,3 +10,7 @@
 .not-custom {
   color: red;
 }
+
+span {
+  display: block;
+}
