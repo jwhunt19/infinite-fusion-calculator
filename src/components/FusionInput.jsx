@@ -11,21 +11,21 @@ const FusionInput = ({ pokemon, setPokemon, inputFor }) => {
     // Gets data-id containing pokedex number
     let selectedId;
     const selectedOption = e.target.list.querySelector(`[value="${e.target.value}"]`);
-    if (selectedOption) selectedId = Number(selectedOption.getAttribute('data-id'))
-
-    // sets passed pokemon state to inputted name and dex # 
-    setPokemon([e.target.value, selectedId])
+    if (selectedOption) {
+      selectedId = Number(selectedOption.getAttribute('data-id'))
+      // sets passed pokemon state to inputted [name, in-game dex #]
+      setPokemon([e.target.value, selectedId])
+    }
   };
 
   return (
-    <div>
+    <div className='fusion-input'>
       <label htmlFor={`${inputFor}-input`}>Pokemon {inputFor[inputFor.length - 1]}</label>
       <input
         id={`${inputFor}-input`}
         name={`${inputFor}-input`}
         list={`${inputFor}-list`}
         placeholder="choose your pokemon"
-        value={pokemon[0]}
         onChange={handleChange}
       />
       <datalist id={`${inputFor}-list`}>
