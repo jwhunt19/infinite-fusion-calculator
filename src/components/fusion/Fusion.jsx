@@ -30,7 +30,6 @@ const Fusion = ({ head, body }) => {
     <span className={isCustom ? 'custom' : 'not-custom'}>{fusionId}</span>
     <span>{names}</span>
     <Sprite head={head} body={body} setIsCustom={setIsCustom} />
-    {/* todo - sprite compoment */}
     {/* todo - types (check for exceptions) */}
     {/* todo - base stats component  */}
     {/* todo - abilities (check for exceptions) */}
