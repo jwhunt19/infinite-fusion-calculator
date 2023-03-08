@@ -1,26 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { ids } from '../data/infiniteFusionData.js'
+import { ids } from "../data/infiniteFusionData.js";
 
 const FusionInput = ({ pokemon, setPokemon, inputFor }) => {
   const handleChange = (e) => {
     // disallow periods, hyphens, and spaces which might be expected but aren't used
-    const value = e.target.value.replace(/[^a-zA-Z]/g, '');
+    const value = e.target.value.replace(/[^a-zA-Z]/g, "");
     e.target.value = value.toLowerCase();
 
     // Gets data-id containing pokedex number
     let selectedId;
-    const selectedOption = e.target.list.querySelector(`[value="${e.target.value}"]`);
+    const selectedOption = e.target.list.querySelector(
+      `[value="${e.target.value}"]`
+    );
     if (selectedOption) {
-      selectedId = Number(selectedOption.getAttribute('data-id'))
+      selectedId = Number(selectedOption.getAttribute("data-id"));
       // sets passed pokemon state to inputted [name, in-game dex #]
-      setPokemon([e.target.value, selectedId])
+      setPokemon((prevState) => {
+        const newState = [...prevState];
+        newState[0] = e.target.value;
+        newState[1] = selectedId;
+        return newState;
+      });
     }
   };
 
   return (
-    <div className='fusion-input'>
-      <label htmlFor={`${inputFor}-input`}>Pokemon {inputFor[inputFor.length - 1]}</label>
+    <div className="fusion-input">
+      <label htmlFor={`${inputFor}-input`}>
+        Pokemon {inputFor[inputFor.length - 1]}
+      </label>
       <input
         id={`${inputFor}-input`}
         name={`${inputFor}-input`}

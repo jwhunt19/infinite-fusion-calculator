@@ -1,7 +1,18 @@
 import React from "react";
 
+const getTypeUrl = (type) => {
+ return `https://raw.githubusercontent.com/Aegide/Aegide.github.io/master/types/${type}.png`
+}
+
 const Types = ({ head, body }) => {
-  
+  let type = []
+  // console.log(head[0] === body[0])
+  // console.log(head)
+  // if (head[0] === body[0] && head[2].selfFusion && body[2].selfFusion) {
+  //   console.log('swag!')
+  // }
+
+  // let headType = 
 }
 
 export default Types;
