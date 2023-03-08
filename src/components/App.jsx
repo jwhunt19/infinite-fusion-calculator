@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import Fusion from "./fusion/Fusion";
 import FusionInput from "./FusionInput";
@@ -10,19 +10,47 @@ const App = () => {
 
   useEffect(() => {
     if (pokemon1[0] && pokemon2[0]) {
-      // Call API utils function to set response data on states
-      setPokemon1(async (prevState) => {
-        const newState = [...prevState];
-        newState[2] = await getPokeAPIData(pokemon1[0]);
-        return newState;
-      });
-      setPokemon2(async (prevState) => {
-        const newState = [...prevState];
-        newState[2] = await getPokeAPIData(pokemon2[0]);
-        return newState;
-      });
+      getPokeAPIData(pokemon1[0])
+        .then(data => {
+          const newState = [...pokemon1];
+          newState[2] = data;
+          setPokemon1(newState);
+        });
+      
+      getPokeAPIData(pokemon2[0])
+        .then(data => {
+          const newState = [...pokemon2];
+          newState[2] = data;
+          setPokemon2(newState);
+        });
     }
   }, [pokemon1, pokemon2]);
+
+  // const pokemon1Ref = useRef(pokemon1);
+  // const pokemon2Ref = useRef(pokemon2);
+  
+  // useEffect(() => {
+  //   pokemon1Ref.current = pokemon1;
+  //   pokemon2Ref.current = pokemon2;
+  // });
+  
+  // useEffect(() => {
+  //   if (pokemon1Ref.current[0] && pokemon2Ref.current[0]) {
+  //     getPokeAPIData(pokemon1Ref.current[0])
+  //       .then(data => {
+  //         const newState = [...pokemon1Ref.current];
+  //         newState[2] = data;
+  //         setPokemon1(newState);
+  //       });
+  
+  //     getPokeAPIData(pokemon2Ref.current[0])
+  //       .then(data => {
+  //         const newState = [...pokemon2Ref.current];
+  //         newState[2] = data;
+  //         setPokemon2(newState);
+  //       });
+  //   }
+  // }, [pokemon1, pokemon2, pokemon1Ref, pokemon2Ref]);
 
   return (
     <>

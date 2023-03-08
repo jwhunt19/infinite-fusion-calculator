@@ -6,8 +6,7 @@ const getTypeUrl = (type) => {
 
 const Types = ({ head, body }) => {
   let type = []
-  // console.log(head[0] === body[0])
-  // console.log(head)
+  console.log(head)
   // if (head[0] === body[0] && head[2].selfFusion && body[2].selfFusion) {
   //   console.log('swag!')
   // }
