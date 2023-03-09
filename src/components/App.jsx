@@ -24,33 +24,7 @@ const App = () => {
           setPokemon2(newState);
         });
     }
-  }, [pokemon1, pokemon2]);
-
-  // const pokemon1Ref = useRef(pokemon1);
-  // const pokemon2Ref = useRef(pokemon2);
-  
-  // useEffect(() => {
-  //   pokemon1Ref.current = pokemon1;
-  //   pokemon2Ref.current = pokemon2;
-  // });
-  
-  // useEffect(() => {
-  //   if (pokemon1Ref.current[0] && pokemon2Ref.current[0]) {
-  //     getPokeAPIData(pokemon1Ref.current[0])
-  //       .then(data => {
-  //         const newState = [...pokemon1Ref.current];
-  //         newState[2] = data;
-  //         setPokemon1(newState);
-  //       });
-  
-  //     getPokeAPIData(pokemon2Ref.current[0])
-  //       .then(data => {
-  //         const newState = [...pokemon2Ref.current];
-  //         newState[2] = data;
-  //         setPokemon2(newState);
-  //       });
-  //   }
-  // }, [pokemon1, pokemon2, pokemon1Ref, pokemon2Ref]);
+  }, [pokemon1[0], pokemon2[0]]);
 
   return (
     <>
