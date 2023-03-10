@@ -47,13 +47,8 @@ const App = () => {
     }
   }, [pokemonOne.name, pokemonTwo.name]);
 
-  const test = () => {
-    console.log(pokemonOne, pokemonTwo);
-  };
-
   return (
     <>
-      <button onClick={() => test()}>test</button>
       <h1>Infinite Fusion Calculator</h1>
       <span>
         Based on work by and sourcing images/data from
