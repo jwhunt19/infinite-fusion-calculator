@@ -14,7 +14,7 @@ const Types = ({ head, body }) => {
   }
 
   // Check if type is already set and both pokemon have necessary data
-  if (!type.length && head.fusionTypes.primary && body.fusionTypes.primary) {
+  if (!type.primary && head.fusionTypes.primary && body.fusionTypes.primary) {
     // Always use head's primary type
     type = { primary: head.fusionTypes.primary, secondary: "" };
 
@@ -38,8 +38,8 @@ const Types = ({ head, body }) => {
 
   return (
     <div>
-      {type.primary ? <img src={getTypeUrl(type.primary)} alt="" /> : null}
-      {type.secondary ? <img src={getTypeUrl(type.secondary)} alt="" /> : null}
+      {type.primary && <img src={getTypeUrl(type.primary)} alt="" />}
+      {type.secondary && <img src={getTypeUrl(type.secondary)} alt="" />}
     </div>
   );
 };
