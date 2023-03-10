@@ -18,12 +18,15 @@ const Types = ({ head, body }) => {
     // Always use head's primary type
     type = { primary: head.fusionTypes.primary, secondary: "" };
 
-    // If the body has no secondary type
+    // If the body has no secondary type and a different primary type
+    // than the head, use the body's primary type instead of the secondary type
     if (!body.fusionTypes.secondary) {
-      // If they don't share a primary type, pass the body's primary instead
-      if (head.fusionTypes.primary !== body.fusionTypes.primary)
+      if (head.fusionTypes.primary !== body.fusionTypes.primary) {
+        // Use the body's primary type as the secondary type
         type.secondary = body.fusionTypes.primary;
-      // Otherwise, the type variable will use the shared type
+        // Otherwise, if/else block will fall through and pass type as is (shared type)
+      }
+
       // If the head is already passing the body's secondary, pass the primary
     } else if (
       head.fusionTypes.primary === body.fusionTypes.secondary ||
