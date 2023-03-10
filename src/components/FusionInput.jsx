@@ -25,7 +25,7 @@ const FusionInput = ({ setPokemon, inputFor }) => {
   return (
     <div className="fusion-input">
       <label htmlFor={`${inputFor}-input`}>
-        Pokemon {inputFor[inputFor.length - 1]}
+        Pokemon {inputFor.slice(-3)}
       </label>
       <input
         id={`${inputFor}-input`}

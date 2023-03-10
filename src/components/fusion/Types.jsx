@@ -26,7 +26,6 @@ const Types = ({ head, body }) => {
         type.secondary = body.fusionTypes.primary;
         // Otherwise, if/else block will fall through and pass type as is (shared type)
       }
-
       // If the head is already passing the body's secondary, pass the primary
     } else if (
       head.fusionTypes.primary === body.fusionTypes.secondary ||
