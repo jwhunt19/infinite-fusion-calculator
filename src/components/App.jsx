@@ -1,33 +1,59 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 
 import Fusion from "./fusion/Fusion";
 import FusionInput from "./FusionInput";
 import { getPokeAPIData } from "../utils/getPokeAPIData";
 
 const App = () => {
-  const [pokemon1, setPokemon1] = useState(["", undefined, {}]);
-  const [pokemon2, setPokemon2] = useState(["", undefined, {}]);
+  const [pokemonOne, setPokemonOne] = useState({
+    name: "",
+    id: null,
+    types: {},
+    fusionTypes: {},
+    abilities: [],
+    stats: {},
+    selfFusion: [false, {}],
+  });
+
+  const [pokemonTwo, setPokemonTwo] = useState({
+    name: "",
+    id: null,
+    types: {},
+    fusionTypes: {},
+    abilities: [],
+    stats: {},
+    selfFusion: [false, {}],
+  });
+
+  const setPokemonData = async (pokemon, setPokemon) => {
+    await getPokeAPIData(pokemon.name).then(
+      ({ types, stats, abilities, fusionTypes, selfFusion = null }) => {
+        setPokemon({
+          ...pokemon,
+          types,
+          stats,
+          abilities,
+          fusionTypes,
+          selfFusion: selfFusion ? selfFusion : pokemon.selfFusion,
+        });
+      }
+    );
+  };
 
   useEffect(() => {
-    if (pokemon1[0] && pokemon2[0]) {
-      getPokeAPIData(pokemon1[0])
-        .then(data => {
-          const newState = [...pokemon1];
-          newState[2] = data;
-          setPokemon1(newState);
-        });
-      
-      getPokeAPIData(pokemon2[0])
-        .then(data => {
-          const newState = [...pokemon2];
-          newState[2] = data;
-          setPokemon2(newState);
-        });
+    if (pokemonOne.name && pokemonTwo.name) {
+      setPokemonData(pokemonOne, setPokemonOne);
+      setPokemonData(pokemonTwo, setPokemonTwo);
     }
-  }, [pokemon1[0], pokemon2[0]]);
+  }, [pokemonOne.name, pokemonTwo.name]);
+
+  const test = () => {
+    console.log(pokemonOne, pokemonTwo);
+  };
 
   return (
     <>
+      <button onClick={() => test()}>test</button>
       <h1>Infinite Fusion Calculator</h1>
       <span>
         Based on work by and sourcing images/data from
@@ -37,17 +63,17 @@ const App = () => {
         </a>
       </span>
       <FusionInput
-        setPokemon={setPokemon1}
-        pokemon={pokemon1}
-        inputFor={"pokemon1"}
+        setPokemon={setPokemonOne}
+        pokemon={pokemonOne}
+        inputFor={"pokemonOne"}
       />
       <FusionInput
-        setPokemon={setPokemon2}
-        pokemon={pokemon2}
-        inputFor={"pokemon2"}
+        setPokemon={setPokemonTwo}
+        pokemon={pokemonTwo}
+        inputFor={"pokemonTwo"}
       />
-      <Fusion head={pokemon1} body={pokemon2} />
-      <Fusion head={pokemon2} body={pokemon1} />
+      <Fusion head={pokemonOne} body={pokemonTwo} />
+      <Fusion head={pokemonTwo} body={pokemonOne} />
     </>
   );
 };

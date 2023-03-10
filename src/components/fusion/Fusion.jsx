@@ -5,29 +5,33 @@ import Sprite from './Sprite';
 import Types from './Types';
 
 const Fusion = ({ head, body }) => {
-  const [dex, setDex] = useState(0)
-  const [fusionId, setFusionId] = useState('')
-  const [names, setNames] = useState('')
-  const [fusedName, setFusedName] = useState('')
-  const [isCustom, setIsCustom] = useState(0)
+  const [fusionDexNum, setFusionDexNum] = useState(0) // 421 ~ 176820
+  const [fusionId, setFusionId] = useState('') // (###.###)
+  const [names, setNames] = useState('') // head/body
+  const [fusedName, setFusedName] = useState('') // Fusion of head & body names
+  const [isCustom, setIsCustom] = useState(0) // Custom sprite check
   
   useEffect(() => {
-    if (head[1] && body[1]) {
-      setDex(head[1] + (420 * body[1]));
+    if (head.id && body.id) {
+      // Calculates unique in-game pokedex # for the fusion
+      setFusionDexNum(head.id + (420 * body.id));
 
-      setFusionId(`(${head[1]}.${body[1]})`);
+      // Fusion id formatted as fusionDexNum ids stringed together (###.###)
+      setFusionId(`(${head.id}.${body.id})`);
 
-      setNames(`${head[0].charAt(0).toUpperCase()+head[0].slice(1)}/` +
-      `${body[0].charAt(0).toUpperCase()+body[0].slice(1)}`)
+      // Names of pokemon in head/body format
+      setNames(`${head.name.charAt(0).toUpperCase()+head.name.slice(1)}/` +
+      `${body.name.charAt(0).toUpperCase()+body.name.slice(1)}`)
 
-      setFusedName(tempFusedNameGenerator(head[0], body[0]))
+      // Combines head and body names (not using real in-game formula yet)
+      setFusedName(tempFusedNameGenerator(head.name, body.name))
     }
   }, [head, body])
 
   return (
-    <div id={`${head[1]}.${body[1]}`}>
+    <div id={`${head.id}.${body.id}`}>
     <span>{fusedName}</span> {/* todo - replace w/ real fused names */}
-    <span>{dex ? dex : ''}</span>
+    <span>{fusionDexNum ? fusionDexNum : ''}</span>
     <span className={isCustom ? 'custom' : 'not-custom'}>{fusionId}</span>
     <span>{names}</span>
     <Sprite head={head} body={body} setIsCustom={setIsCustom} />

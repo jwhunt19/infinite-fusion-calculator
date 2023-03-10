@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { ids } from "../data/infiniteFusionData.js";
 
-const FusionInput = ({ pokemon, setPokemon, inputFor }) => {
+const FusionInput = ({ setPokemon, inputFor }) => {
   const handleChange = (e) => {
     // disallow periods, hyphens, and spaces which might be expected but aren't used
     const value = e.target.value.replace(/[^a-zA-Z]/g, "");
@@ -15,12 +15,9 @@ const FusionInput = ({ pokemon, setPokemon, inputFor }) => {
     );
     if (selectedOption) {
       selectedId = Number(selectedOption.getAttribute("data-id"));
-      // sets passed pokemon state to inputted [name, in-game dex #]
+      // Sets name and id on pokemon state
       setPokemon((prevState) => {
-        const newState = [...prevState];
-        newState[0] = e.target.value;
-        newState[1] = selectedId;
-        return newState;
+        return { ...prevState, name: e.target.value, id: selectedId };
       });
     }
   };

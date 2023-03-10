@@ -5,49 +5,41 @@ const getTypeUrl = (type) => {
 };
 
 const Types = ({ head, body }) => {
-  let type = [];
+  let type = { primary: "", secondary: "" };
 
   // Handle if the pokemon has a self fusion exception
-  if (head[0] === body[0] && head[2].selfFusion && body[2].selfFusion) {
-    type = head[2].selfFusion;
+  if (head.name === body.name && head.selfFusion[0] && body.selfFusion[0]) {
+    type.primary = head.selfFusion[1].primary;
+    type.secondary = head.selfFusion[1].secondary;
   }
 
-  if (!type.length && head[2].types && body[2].types) {
-    // Grabs types from data. Provides empty string for second type if none exists
-    const setTypes = (pokeData) => [
-      pokeData.types[0].type.name,
-      pokeData.types[1] ? pokeData.types[1].type.name : "",
-    ];
-
-    // Check if type exceptions exist, if so use them otherwise call setTypes
-    const headTypes = head[2].typesFusion
-      ? [head[2].typesFusion[0], ""]
-      : setTypes(head[2]);
-
-    const bodyTypes = body[2].typesFusion
-      ? [body[2].typesFusion[0], ""]
-      : setTypes(body[2]);
-
-    type = [headTypes[0], ""]; // Always use head's primary type
+  // Check if type is already set and both pokemon have necessary data
+  if (!type.length && head.fusionTypes.primary && body.fusionTypes.primary) {
+    // Always use head's primary type
+    type = { primary: head.fusionTypes.primary, secondary: "" };
 
     // If the body has no secondary type
-    if (!bodyTypes[1]) {
+    if (!body.fusionTypes.secondary) {
       // If they don't share a primary type, pass the body's primary instead
-      if (headTypes[0] !== bodyTypes[0]) type[1] = bodyTypes[0];
+      if (head.fusionTypes.primary !== body.fusionTypes.primary)
+        type.secondary = body.fusionTypes.primary;
       // Otherwise, the type variable will use the shared type
       // If the head is already passing the body's secondary, pass the primary
-    } else if (headTypes[0] === bodyTypes[1] || !bodyTypes[1]) {
-      type[1] = bodyTypes[0];
+    } else if (
+      head.fusionTypes.primary === body.fusionTypes.secondary ||
+      !body.fusionTypes.secondary
+    ) {
+      type.secondary = body.fusionTypes.primary;
       // Else pass head's primary and body's secondary as expected
     } else {
-      type[1] = bodyTypes[1];
+      type.secondary = body.fusionTypes.secondary;
     }
   }
 
   return (
     <div>
-      {type.length ? <img src={getTypeUrl(type[0])} alt="" /> : null}
-      {type[1] ? <img src={getTypeUrl(type[1])} alt="" /> : null}
+      {type.primary ? <img src={getTypeUrl(type.primary)} alt="" /> : null}
+      {type.secondary ? <img src={getTypeUrl(type.secondary)} alt="" /> : null}
     </div>
   );
 };
