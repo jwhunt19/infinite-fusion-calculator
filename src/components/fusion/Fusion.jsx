@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import tempFusedNameGenerator from '../../utils/tempFusedNameGenerator';
 import Sprite from './Sprite';
 import Types from './Types';
+import Stats from './Stats'
+import tempFusedNameGenerator from '../../utils/tempFusedNameGenerator';
 
 const Fusion = ({ head, body }) => {
   const [fusionDexNum, setFusionDexNum] = useState(0) // 421 ~ 176820
@@ -35,9 +36,9 @@ const Fusion = ({ head, body }) => {
     <span className={isCustom ? 'custom' : 'not-custom'}>{fusionId}</span>
     <span>{names}</span>
     <Sprite head={head} body={body} setIsCustom={setIsCustom} />
-    {/* todo - types (check for exceptions) */}
     <Types head={head} body={body}/>
     {/* todo - base stats component  */}
+    <Stats head={head} body={body}/>
     {/* todo - abilities (check for exceptions) */}
     {/* todo - type effectiveness component */}
     <hr />
