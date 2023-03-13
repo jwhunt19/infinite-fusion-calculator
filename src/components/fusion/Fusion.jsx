@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
+// components
 import Sprite from './Sprite';
 import Types from './Types';
 import Stats from './Stats'
+import Abilities from './Abilities';
+
+// utils
 import tempFusedNameGenerator from '../../utils/tempFusedNameGenerator';
 
 const Fusion = ({ head, body }) => {
@@ -37,9 +41,10 @@ const Fusion = ({ head, body }) => {
     <span>{names}</span>
     <Sprite head={head} body={body} setIsCustom={setIsCustom} />
     <Types head={head} body={body}/>
-    {/* todo - base stats component  */}
     <Stats head={head} body={body}/>
     {/* todo - abilities (check for exceptions) */}
+    <Abilities head={head} body={body}/>
+    
     {/* todo - type effectiveness component */}
     <hr />
     </div>
