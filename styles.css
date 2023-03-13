@@ -26,3 +26,20 @@ span {
 .stat-equal {
   color: yellow;
 }
+
+.stat {
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.stat-value-container {
+  width: 70px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.stats {
+  margin-bottom: 15px;
+}
