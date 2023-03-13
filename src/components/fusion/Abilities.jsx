@@ -50,7 +50,7 @@ const Abilities = ({ head, body }) => {
       </div>
       <div className="other-abilities">
         {otherAbilities &&
-          otherAbilities.map((ability) => <span>{ability}</span>)}
+          otherAbilities.map((ability) => <span key={ability}>{ability}</span>)}
       </div>
     </div>
   );
