@@ -9,11 +9,14 @@ const Stats = ({ head, body }) => {
 
   return (
     <div className="stats">
-      {Object.keys(fusedStats).map((statName) => (
+      {Object.keys(fusedStats).map((statName, i) => (
         <Stat
           stat={fusedStats[statName]}
           comparedStat={otherFusionStats[statName]}
           statName={statName}
+          key={head.id && body.id 
+            ? `${head.id}.${body.id}-${statName}stat`
+            : `${i}-stat-tempkey`}
         />
       ))}
     </div>
