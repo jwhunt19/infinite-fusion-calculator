@@ -16,7 +16,8 @@ const Abilities = ({ head, body }) => {
     fusionAbilities = [capitalize(bodyAbilities[0].ability.name)];
     bodyAbilities.splice(0, 1);
 
-    if (headAbilities[1].is_hidden) {
+    // Check if there is a second ability, or if it's hidden
+    if (!headAbilities[1] || headAbilities[1].is_hidden) {
       secondAbility = capitalize(headAbilities[0].ability.name);
       headAbilities.splice(0, 1);
     } else {
