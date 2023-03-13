@@ -14,3 +14,15 @@
 span {
   display: block;
 }
+
+.stat-greater {
+  color: green;
+}
+
+.stat-less {
+  color: red;
+}
+
+.stat-equal {
+  color: yellow;
+}
