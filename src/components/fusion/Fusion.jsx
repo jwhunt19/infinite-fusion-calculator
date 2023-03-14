@@ -5,6 +5,7 @@ import Sprite from './Sprite';
 import Types from './Types';
 import Stats from './Stats'
 import Abilities from './Abilities';
+import TypeEffectiveness from './TypeEffectiveness';
 
 // utils
 import tempFusedNameGenerator from '../../utils/tempFusedNameGenerator';
@@ -42,10 +43,10 @@ const Fusion = ({ head, body }) => {
     <Sprite head={head} body={body} setIsCustom={setIsCustom} />
     <Types head={head} body={body}/>
     <Stats head={head} body={body}/>
-    {/* todo - abilities (check for exceptions) */}
     <Abilities head={head} body={body}/>
-    
     {/* todo - type effectiveness component */}
+    <TypeEffectiveness />
+
     <hr />
     </div>
   )
