@@ -2,15 +2,14 @@ import React from "react";
 
 const Stat = ({ stat, comparedStat, statName }) => {
   const statLabels = {
-    hp: 'HP',
-    attack: 'ATTACK',
-    defense: 'DEFENSE',
-    specialAttack: 'SP. ATK',
-    specialDefense: 'SP. DEF',
-    speed: 'SPEED',
-    total: 'TOTAL'
+    hp: "HP",
+    attack: "ATTACK",
+    defense: "DEFENSE",
+    specialAttack: "SP. ATK",
+    specialDefense: "SP. DEF",
+    speed: "SPEED",
+    total: "TOTAL",
   };
-  
 
   const compareFusionStats = (s1, s2) => {
     if (s1 > s2) {
@@ -46,13 +45,15 @@ const Stat = ({ stat, comparedStat, statName }) => {
   return (
     <div className="stat">
       <span>{statLabels[statName]}</span>
-      {stat && comparedStat ? (
-        <span className={`stat-value ${statsCompared}`}>
-          {stat} {statsDifference}
-        </span>
-      ) : (
-        <span className="stat-value"></span>
-      )}
+      <div className="stat-value-container">
+        {stat && comparedStat ? (
+          <span className={`stat-value ${statsCompared}`}>
+            {stat} {statsDifference}
+          </span>
+        ) : (
+          <span className="stat-value"></span>
+        )}
+      </div>
     </div>
   );
 };
