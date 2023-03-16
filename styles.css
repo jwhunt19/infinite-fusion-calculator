@@ -43,3 +43,16 @@ span {
 .stats {
   margin-bottom: 15px;
 }
+
+.type-dmg {
+  display: block;
+}
+
+.type-dmg-list {
+  list-style: none;
+  display: flex;
+}
+
+.type-dmg-img {
+  width: 60px;
+}
