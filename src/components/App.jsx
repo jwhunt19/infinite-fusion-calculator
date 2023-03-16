@@ -27,8 +27,8 @@ const App = () => {
 
   const setPokemonData = async (pokemon, setPokemon) => {
     await getPokeAPIData(pokemon.name).then(
-      ({ types, stats, abilities, fusionTypes, selfFusion = null }) => {
-        setPokemon({
+      async ({ types, stats, abilities, fusionTypes, selfFusion = null }) => {
+        await setPokemon({
           ...pokemon,
           types,
           stats,

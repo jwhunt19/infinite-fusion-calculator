@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const getTypeUrl = (type) => {
   return `https://raw.githubusercontent.com/Aegide/Aegide.github.io/master/types/${type}.png`;
 };
 
-const Types = ({ head, body }) => {
+const setTypes = (head, body, setFusionType) => {
   let type = { primary: "", secondary: "" };
+  setFusionType(type)
 
   // Handle if the pokemon has a self fusion exception
   if (head.name === body.name && head.selfFusion[0] && body.selfFusion[0]) {
@@ -38,10 +39,24 @@ const Types = ({ head, body }) => {
     }
   }
 
+  setFusionType(type)
+};
+
+const Types = ({ head, body, fusionType, setFusionType }) => {
+  // Handle if the pokemon has a self fusion exception
+
+  useEffect(() => {
+    setTypes(head, body, setFusionType)
+  }, [head, body]);
+
   return (
     <div>
-      {type.primary && <img src={getTypeUrl(type.primary)} alt="" />}
-      {type.secondary && <img src={getTypeUrl(type.secondary)} alt="" />}
+      {fusionType.primary && (
+        <img src={getTypeUrl(fusionType.primary)} alt="" />
+      )}
+      {fusionType.secondary && (
+        <img src={getTypeUrl(fusionType.secondary)} alt="" />
+      )}
     </div>
   );
 };
