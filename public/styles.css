@@ -3,6 +3,12 @@
   color: aliceblue;
 }
 
+/* HEADER */
+
+header {
+  margin: auto;
+}
+
 .custom {
   color: green
 }

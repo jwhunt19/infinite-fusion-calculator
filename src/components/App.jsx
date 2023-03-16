@@ -49,6 +49,7 @@ const App = () => {
 
   return (
     <>
+    <header>
       <h1>Infinite Fusion Calculator</h1>
       <span>
         Based on work by and sourcing images/data from
@@ -57,6 +58,7 @@ const App = () => {
           Aegide
         </a>
       </span>
+    </header>
       <FusionInput
         setPokemon={setPokemonOne}
         pokemon={pokemonOne}
