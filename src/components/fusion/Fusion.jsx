@@ -56,7 +56,7 @@ const Fusion = ({ head, body }) => {
       <Stats head={head} body={body} />
       <Abilities head={head} body={body} />
       {/* todo - type effectiveness component */}
-      <TypeEffectiveness />
+      <TypeEffectiveness head={head} body={body} fusionType={fusionType} />
       <hr />
     </div>
   );
