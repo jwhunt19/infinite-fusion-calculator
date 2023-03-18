@@ -50,7 +50,7 @@ const Types = ({ head, body, fusionType, setFusionType }) => {
   }, [head, body]);
 
   return (
-    <div className="fusion-types">
+    <div className={`fusion-types ${!fusionType.secondary ? 'single-type' : ''}`}>
       {fusionType.primary && (
         <img className="fusion-type-img" src={getTypeUrl(fusionType.primary)} alt="" />
       )}
