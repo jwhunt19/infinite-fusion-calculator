@@ -29,15 +29,15 @@ const FusionInput = ({ setPokemon, inputFor }) => {
       templateColumns={"repeat(2, 1fr)"}
       templateRows={"repeat(2, 1fr)"}
     >
-      <GridItem colSpan={1}>
+      <GridItem colSpan={1} maxH="3vh">
         <label htmlFor={`${inputFor}-input`}>
           Pokemon {inputFor.slice(-3)}
         </label>
       </GridItem>
-      <GridItem colSpan={1} textAlign="right">
+      <GridItem colSpan={1} textAlign="right" maxH="3vh">
         <a href="" tabindex="-1">Randomize</a>
       </GridItem>
-      <GridItem colSpan={2}>
+      <GridItem colSpan={2} maxH="3vh">
         <input
           id={`${inputFor}-input`}
           name={`${inputFor}-input`}

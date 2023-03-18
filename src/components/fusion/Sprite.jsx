@@ -20,7 +20,7 @@ const Sprite = ({ head, body, setIsCustom }) => {
   }, [head, body])
 
   return (
-    <img src={img} alt={`A pokemon representing the fusion of ${head.name} and ${body.name}`} />
+    <img className='fusion-sprite' src={img} alt={`A pokemon representing the fusion of ${head.name} and ${body.name}`} />
   )
 }
 

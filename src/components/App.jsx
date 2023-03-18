@@ -105,13 +105,9 @@ const App = () => {
               <span>{JSON.stringify(pokemonTwo.stats)}</span>
             </Box>
           </GridItem>
-
-          <GridItem>
-            <Fusion head={pokemonOne} body={pokemonTwo} />
-          </GridItem>
-
-          <GridItem>
-            <Fusion head={pokemonTwo} body={pokemonOne} />
+          <GridItem className="fusions-container">
+              <Fusion head={pokemonOne} body={pokemonTwo} />
+              <Fusion head={pokemonTwo} body={pokemonOne} />
           </GridItem>
         </Grid>
       </Box>

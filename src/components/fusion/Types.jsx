@@ -50,12 +50,12 @@ const Types = ({ head, body, fusionType, setFusionType }) => {
   }, [head, body]);
 
   return (
-    <div>
+    <div className="fusion-types">
       {fusionType.primary && (
-        <img src={getTypeUrl(fusionType.primary)} alt="" />
+        <img className="fusion-type-img" src={getTypeUrl(fusionType.primary)} alt="" />
       )}
       {fusionType.secondary && (
-        <img src={getTypeUrl(fusionType.secondary)} alt="" />
+        <img className="fusion-type-img" src={getTypeUrl(fusionType.secondary)} alt="" />
       )}
     </div>
   );

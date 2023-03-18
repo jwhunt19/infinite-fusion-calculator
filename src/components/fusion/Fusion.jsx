@@ -41,23 +41,25 @@ const Fusion = ({ head, body }) => {
   }, [head, body]);
 
   return (
-    <div id={`${head.id}.${body.id}`}>
-      <span>{fusedName}</span> {/* todo - replace w/ real fused names */}
-      <span>{fusionDexNum ? fusionDexNum : ""}</span>
-      <span className={isCustom ? "custom" : "not-custom"}>{fusionId}</span>
-      <span>{names}</span>
-      <Sprite head={head} body={body} setIsCustom={setIsCustom} />
-      <Types
-        head={head}
-        body={body}
-        fusionType={fusionType}
-        setFusionType={setFusionType}
-      />
-      <Stats head={head} body={body} />
-      <Abilities head={head} body={body} />
-      {/* todo - type effectiveness component */}
-      <TypeEffectiveness head={head} body={body} fusionType={fusionType} />
-      <hr />
+    <div id={`${head.id}.${body.id}`} className="fusion-container">
+      <div>
+        <span>{fusedName}</span> {/* todo - replace w/ real fused names */}
+        <span>{fusionDexNum ? `#${fusionDexNum}` : ""}</span>
+        <span className={isCustom ? "custom" : "not-custom"}>{fusionId}</span>
+        <h2 className="fusion-names">{names}</h2>
+        <Sprite head={head} body={body} setIsCustom={setIsCustom} />
+        <Types
+          head={head}
+          body={body}
+          fusionType={fusionType}
+          setFusionType={setFusionType}
+        />
+        <Stats head={head} body={body} />
+        <Abilities head={head} body={body} />
+      </div>
+      <div>
+        <TypeEffectiveness head={head} body={body} fusionType={fusionType} />
+      </div>
     </div>
   );
 };

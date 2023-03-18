@@ -10,9 +10,9 @@ const TypeEffectiveness = ({ fusionType, head, body }) => {
     "4x": [],
     "2x": [],
     "1x": [],
-    "0x": [],
     "0.5x": [],
     "0.25x": [],
+    "0x": [],
   };
 
   if (fusionType.primary) {
@@ -25,7 +25,7 @@ const TypeEffectiveness = ({ fusionType, head, body }) => {
       <ul></ul>
       {Object.keys(typeChart).map((effectiveness) => (
         <div className="type-dmg">
-          <label>{effectiveness}: </label>
+          <label className="type-label">{effectiveness}: </label>
           <ul className="type-dmg-list">
             {
               typeChart[effectiveness].map((type) => (
