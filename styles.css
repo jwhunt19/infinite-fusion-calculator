@@ -130,6 +130,11 @@ header span a {
 .fusion-types {
   display: flex;
   flex-direction: row;
+  width: 300px
+}
+
+.single-type {
+  margin-left: 10%;
 }
 
 .fusion-type-img {
