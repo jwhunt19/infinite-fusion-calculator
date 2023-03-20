@@ -84,7 +84,7 @@ const App = () => {
               />
             </Box>
             <Box w="70%" className="fusion-input-base">
-              <span>{JSON.stringify(pokemonOne.stats)}</span>
+              <span className="base-pokemon-stats">{JSON.stringify(pokemonOne.stats)}</span>
             </Box>
           </GridItem>
 
@@ -102,7 +102,7 @@ const App = () => {
               />
             </Box>
             <Box w="70%" className="fusion-input-base">
-              <span>{JSON.stringify(pokemonTwo.stats)}</span>
+              <span className="base-pokemon-stats">{JSON.stringify(pokemonTwo.stats)}</span>
             </Box>
           </GridItem>
           <GridItem className="fusions-container">

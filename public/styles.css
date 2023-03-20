@@ -169,3 +169,7 @@ header span a {
   width: 60px;
 }
 
+.base-pokemon-stats {
+  color: black;
+  font-size: 25px;
+}
