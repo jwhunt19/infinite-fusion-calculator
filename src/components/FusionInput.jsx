@@ -1,4 +1,5 @@
 import React from "react";
+import { Grid, GridItem } from "@chakra-ui/react";
 
 import { ids } from "../data/infiniteFusionData.js";
 
@@ -23,23 +24,34 @@ const FusionInput = ({ setPokemon, inputFor }) => {
   };
 
   return (
-    <div className="fusion-input">
-      <label htmlFor={`${inputFor}-input`}>
-        Pokemon {inputFor.slice(-3)}
-      </label>
-      <input
-        id={`${inputFor}-input`}
-        name={`${inputFor}-input`}
-        list={`${inputFor}-list`}
-        placeholder="choose your pokemon"
-        onChange={handleChange}
-      />
-      <datalist id={`${inputFor}-list`}>
-        {ids.map((id) => (
-          <option key={id[1]} value={id[0]} data-id={id[1]} />
-        ))}
-      </datalist>
-    </div>
+    <Grid
+      className="fusion-input"
+      templateColumns={"repeat(2, 1fr)"}
+      templateRows={"repeat(2, 1fr)"}
+    >
+      <GridItem colSpan={1} maxH="3vh">
+        <label htmlFor={`${inputFor}-input`}>
+          Pokemon {inputFor.slice(-3)}
+        </label>
+      </GridItem>
+      <GridItem colSpan={1} textAlign="right" maxH="3vh">
+        <a href="" tabindex="-1">Randomize</a>
+      </GridItem>
+      <GridItem colSpan={2} maxH="3vh">
+        <input
+          id={`${inputFor}-input`}
+          name={`${inputFor}-input`}
+          list={`${inputFor}-list`}
+          placeholder="choose your pokemon"
+          onChange={handleChange}
+        />
+        <datalist id={`${inputFor}-list`}>
+          {ids.map((id) => (
+            <option key={id[1]} value={id[0]} data-id={id[1]} />
+          ))}
+        </datalist>
+      </GridItem>
+    </Grid>
   );
 };
 
