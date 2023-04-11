@@ -8,7 +8,7 @@ const FusionInput = ({ setPokemon, inputFor, isLoading, setShouldUpdatePokemonDa
 
   const handleChange = (e) => {
     // disallow periods, hyphens, and spaces which might be expected but aren't used
-    const value = e.target.value.replace(/[^a-zA-Z]/g, "");
+    const value = e.target.value.replace(/[^a-zA-Z2]/g, "");
     e.target.value = value.toLowerCase();
     setInputValue(e.target.value);
 
