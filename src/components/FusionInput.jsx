@@ -52,7 +52,7 @@ const FusionInput = ({ setPokemon, inputFor, isLoading, setShouldUpdatePokemonDa
         </label>
       </GridItem>
       <GridItem colSpan={1} textAlign="right" maxH="3vh">
-        <button onClick={randomize} tabindex="-1">Randomize</button>
+        <button onClick={randomize} tabIndex="-1">Randomize</button>
       </GridItem>
       <GridItem colSpan={2} maxH="3vh">
         <input
