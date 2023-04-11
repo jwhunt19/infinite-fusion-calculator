@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 
 import { ids } from "../data/infiniteFusionData.js";
 
-const FusionInput = ({ setPokemon, inputFor }) => {
+const FusionInput = ({ setPokemon, inputFor, isLoading, setShouldUpdatePokemonData}) => {
+  const [inputValue, setInputValue] = useState("");
+
   const handleChange = (e) => {
     // disallow periods, hyphens, and spaces which might be expected but aren't used
     const value = e.target.value.replace(/[^a-zA-Z]/g, "");
     e.target.value = value.toLowerCase();
+    setInputValue(e.target.value);
 
     // Gets data-id containing pokedex number
     let selectedId;
@@ -20,8 +23,22 @@ const FusionInput = ({ setPokemon, inputFor }) => {
       setPokemon((prevState) => {
         return { ...prevState, name: e.target.value, id: selectedId };
       });
+      setShouldUpdatePokemonData(true)
     }
   };
+
+  const randomize = () => {
+    const id = Math.floor(Math.random() * (ids.length));
+    const randomPokemon = ids[id][0];
+    const randomId = id + 1
+    setInputValue(randomPokemon)
+    console.log(randomPokemon, randomId, ids.length)
+    setPokemon((prevState) => {
+      return { ...prevState, name: randomPokemon, id: randomId };
+    });
+
+    setShouldUpdatePokemonData(true)
+  }
 
   return (
     <Grid
@@ -35,7 +52,7 @@ const FusionInput = ({ setPokemon, inputFor }) => {
         </label>
       </GridItem>
       <GridItem colSpan={1} textAlign="right" maxH="3vh">
-        <a href="" tabindex="-1">Randomize</a>
+        <button onClick={randomize} tabindex="-1">Randomize</button>
       </GridItem>
       <GridItem colSpan={2} maxH="3vh">
         <input
@@ -43,7 +60,9 @@ const FusionInput = ({ setPokemon, inputFor }) => {
           name={`${inputFor}-input`}
           list={`${inputFor}-list`}
           placeholder="choose your pokemon"
+          value={inputValue}
           onChange={handleChange}
+          disabled={isLoading}
         />
         <datalist id={`${inputFor}-list`}>
           {ids.map((id) => (

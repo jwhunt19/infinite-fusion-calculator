@@ -12,6 +12,7 @@ import FusionInput from "./FusionInput";
 import { getPokeAPIData } from "../utils/getPokeAPIData";
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const [pokemonOne, setPokemonOne] = useState({
     name: "",
     id: null,
@@ -32,7 +33,10 @@ const App = () => {
     selfFusion: [false, {}],
   });
 
+  const [shouldUpdatePokemonData, setShouldUpdatePokemonData] = useState(false);
+
   const setPokemonData = async (pokemon, setPokemon) => {
+    setIsLoading(true)
     await getPokeAPIData(pokemon.name).then(
       async ({ types, stats, abilities, fusionTypes, selfFusion = null }) => {
         await setPokemon({
@@ -45,14 +49,16 @@ const App = () => {
         });
       }
     );
+    setIsLoading(false)
   };
 
   useEffect(() => {
-    if (pokemonOne.name && pokemonTwo.name) {
+    if (pokemonOne.name && pokemonTwo.name && shouldUpdatePokemonData) {
       setPokemonData(pokemonOne, setPokemonOne);
       setPokemonData(pokemonTwo, setPokemonTwo);
+      setShouldUpdatePokemonData(false);
     }
-  }, [pokemonOne.name, pokemonTwo.name]);
+  }, [pokemonOne.name, pokemonTwo.name, shouldUpdatePokemonData]);
 
   return (
     <ChakraProvider>
@@ -81,6 +87,8 @@ const App = () => {
                 setPokemon={setPokemonOne}
                 pokemon={pokemonOne}
                 inputFor={"pokemonOne"}
+                isLoading={isLoading}
+                setShouldUpdatePokemonData={setShouldUpdatePokemonData}
               />
             </Box>
             <Box w="70%" className="fusion-input-base">
@@ -99,6 +107,8 @@ const App = () => {
                 setPokemon={setPokemonTwo}
                 pokemon={pokemonTwo}
                 inputFor={"pokemonTwo"}
+                isLoading={isLoading}
+                setShouldUpdatePokemonData={setShouldUpdatePokemonData}
               />
             </Box>
             <Box w="70%" className="fusion-input-base">
