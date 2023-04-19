@@ -28,7 +28,11 @@ function properlyCapitalizeFusionName(string) {
 }
 function getFusedNames(num1, num2) {
   if (num1 === num2) {
-    return ["", ""]; //fusing a pokemon with itself shouldn't give it a new name.
+    //fusing a pokemon with the same species usually doesn't give a new name
+    //there are exceptions (e.g. Shelgon/Shelgon = Shellgon)
+    //simply removing this return statement should allow you to display those if desired
+    //but I haven't tested it much outside of Shellgon
+    return ["", ""];
   }
 
   try {
