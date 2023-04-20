@@ -8,7 +8,7 @@ import Abilities from "./Abilities";
 import TypeEffectiveness from "./TypeEffectiveness";
 
 // utils
-import tempFusedNameGenerator from "../../utils/tempFusedNameGenerator";
+import getFusedNames from "../../utils/fusedPokemonNames";
 
 const Fusion = ({ head, body }) => {
   const [fusedName, setFusedName] = useState(""); // Fusion of head & body names
@@ -35,8 +35,9 @@ const Fusion = ({ head, body }) => {
           `${body.name.charAt(0).toUpperCase() + body.name.slice(1)}`
       );
 
-      // Combines head and body names (not using real in-game formula yet)
-      setFusedName(tempFusedNameGenerator(head.name, body.name));
+      // Combines head and body names (function provided by Exadi#1248)
+      // https://github.com/Exadi
+      setFusedName(getFusedNames(head.id, body.id)[0]);
     }
   }, [head, body]);
 
