@@ -495,3 +495,5 @@ const fusionNameParts = [
   ["LAR", "VESTA"],
   ["STUN", "FISK"],
 ];
+
+export default getFusedNames;
