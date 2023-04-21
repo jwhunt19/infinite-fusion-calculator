@@ -64,7 +64,7 @@ const App = () => {
     <ChakraProvider>
       <Box backgroundColor="rgb(27, 24, 34)">
         <Grid maxW="80vw" m="auto" pt="5vh">
-          <GridItem m="auto" textAlign="center" mb="5vh">
+          <GridItem m="auto" textAlign="center" mb="3vh">
             <header>
               <h1>Infinite Fusion Calculator</h1>
               <span>
@@ -78,6 +78,13 @@ const App = () => {
                 Fused names provided by{" "}
                 <a href="https://github.com/Exadi" target="_blank">
                   Exadi
+                </a>
+              </span>
+              <span>
+                <br />
+                Report bugs here -{" "}
+                <a className="issues" href="https://github.com/jwhunt19/infinite-fusion-calculator/issues" target="_blank">
+                  Issues
                 </a>
               </span>
             </header>

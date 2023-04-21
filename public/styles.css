@@ -182,3 +182,7 @@ header span a {
 .fusion-name {
   margin: 0 !important;
 }
+
+.issues {
+  color: red;
+}
