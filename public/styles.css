@@ -173,3 +173,12 @@ header span a {
   color: black;
   font-size: 25px;
 }
+
+.fusion-credits {
+  font-size: 15px;
+  margin: 0 !important;
+}
+
+.fusion-name {
+  margin: 0 !important;
+}

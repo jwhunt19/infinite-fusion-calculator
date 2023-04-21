@@ -47,12 +47,14 @@ const Fusion = ({ head, body }) => {
   return (
     <div id={`${head.id}.${body.id}`} className="fusion-container">
       <div>
-        <span>{fusedName}</span>
+        <span className="fusion-name">{fusedName}</span>
         <span>{fusionDexNum ? `#${fusionDexNum}` : ""}</span>
         <span className={isCustom ? "custom" : "not-custom"}>{fusionId}</span>
         <h2 className="fusion-names">{names}</h2>
         <Sprite head={head} body={body} setIsCustom={setIsCustom} />
-        <span>{fusionCredits ? `sprite by ${fusionCredits}` : ""}</span>
+        <span className="fusion-credits">
+          {fusionCredits ? `sprite by ${fusionCredits}` : ""}
+        </span>
         <Types
           head={head}
           body={body}
