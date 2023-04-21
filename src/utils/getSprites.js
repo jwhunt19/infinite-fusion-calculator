@@ -1,6 +1,7 @@
 const getSprites = async (head, body) => {
   const autogenURL = `https://raw.githubusercontent.com/Aegide/autogen-fusion-sprites/master/Battlers/${head}/${head}.${body}.png`
-  const customURL = `https://raw.githubusercontent.com/Aegide/custom-fusion-sprites/main/CustomBattlers/${head}.${body}.png`
+  // const customURL = `https://raw.githubusercontent.com/Aegide/custom-fusion-sprites/main/CustomBattlers/${head}.${body}.png`
+  const customURL = `https://raw.githubusercontent.com/infinitefusion/sprites/main/CustomBattlers/${head}.${body}.png`
 
   try {
     const response = await fetch(customURL);
