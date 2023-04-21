@@ -9,12 +9,14 @@ import TypeEffectiveness from "./TypeEffectiveness";
 
 // utils
 import getFusedNames from "../../utils/fusedPokemonNames";
+import getSpriteCredits from "../../utils/getSpriteCredits";
 
 const Fusion = ({ head, body }) => {
   const [fusedName, setFusedName] = useState(""); // Fusion of head & body names
   const [fusionDexNum, setFusionDexNum] = useState(0); // 421 ~ 176820
   const [isCustom, setIsCustom] = useState(0); // Custom sprite check
   const [fusionId, setFusionId] = useState(""); // (###.###)
+  const [fusionCredits, setFusionCredits] = useState(""); // sprite credits
   const [names, setNames] = useState(""); // head/body
   const [fusionType, setFusionType] = useState({
     primary: "",
@@ -38,17 +40,19 @@ const Fusion = ({ head, body }) => {
       // Combines head and body names (function provided by Exadi#1248)
       // https://github.com/Exadi
       setFusedName(getFusedNames(head.id, body.id)[0]);
+      getSpriteCredits(fusionId.slice(1, -1), setFusionCredits);
     }
   }, [head, body]);
 
   return (
     <div id={`${head.id}.${body.id}`} className="fusion-container">
       <div>
-        <span>{fusedName}</span> {/* todo - replace w/ real fused names */}
+        <span>{fusedName}</span>
         <span>{fusionDexNum ? `#${fusionDexNum}` : ""}</span>
         <span className={isCustom ? "custom" : "not-custom"}>{fusionId}</span>
         <h2 className="fusion-names">{names}</h2>
         <Sprite head={head} body={body} setIsCustom={setIsCustom} />
+        <span>{fusionCredits ? `sprite by ${fusionCredits}` : ""}</span>
         <Types
           head={head}
           body={body}
