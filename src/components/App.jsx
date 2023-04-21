@@ -73,6 +73,13 @@ const App = () => {
                   Aegide
                 </a>
               </span>
+              <span> - </span>
+              <span>
+                Fused names provided by{" "}
+                <a href="https://github.com/Exadi" target="_blank">
+                  Exadi
+                </a>
+              </span>
             </header>
           </GridItem>
 
