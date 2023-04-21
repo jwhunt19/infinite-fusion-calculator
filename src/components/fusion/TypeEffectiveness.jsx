@@ -22,14 +22,13 @@ const TypeEffectiveness = ({ fusionType, head, body }) => {
   return (
     <div className="type-chart">
       <label htmlFor="4x"></label>
-      <ul></ul>
       {Object.keys(typeChart).map((effectiveness) => (
-        <div className="type-dmg">
+        <div className="type-dmg" key={effectiveness}>
           <label className="type-label">{effectiveness}: </label>
           <ul className="type-dmg-list">
             {
               typeChart[effectiveness].map((type) => (
-                <li >
+                <li key={type}>
                   <img className='type-dmg-img' src={getTypeUrl(type)} />
                 </li>
               ))
